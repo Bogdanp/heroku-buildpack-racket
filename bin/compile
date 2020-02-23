@@ -106,7 +106,7 @@ echo 'export PATH=$PATH:$HOME/racket/bin' >> .profile.d/setup_environment.sh
 
 echo "-----> Installing application package"
 
-raco pkg install -i --no-setup --deps search-auto -n "$RACKET_APP_NAME" "$APP_DIR/$RACKET_APP_NAME" |& indent
+raco pkg install -D -i --no-setup --deps search-auto -n "$RACKET_APP_NAME" "$APP_DIR/$RACKET_APP_NAME" |& indent
 raco setup -DK --fail-fast |& indent
 
 echo "-----> Compiling application distribution"
