@@ -75,10 +75,16 @@ else
   fi
 fi
 
-APP_DIR="$BUILD_DIR/$RACKET_APP_NAME"
-RACKET_DIR="/opt/racket"
+APP_DIR="$BUILD_DIR/app"
+RELEASE_DIR="$BUILD_DIR/release"
+RACKET_DIR="$BUILD_DIR/racket"
 
-cd $BUILD_DIR
+pushd $BUILD_DIR
+
+echo "-----> Moving application into ‘app’ directory"
+
+mkdir -p $APP_DIR
+mv $BUILD_DIR/!(app|Procfile) $APP_DIR/
 
 echo "-----> Building Racket installation"
 echo "     - Downloading prebuilt installer"
@@ -100,5 +106,12 @@ echo 'export PATH=$PATH:$HOME/racket/bin' >> .profile.d/setup_environment.sh
 
 echo "-----> Installing application package"
 
-raco pkg install -i --no-setup --deps search-auto -n "$RACKET_APP_NAME" |& indent
+raco pkg install -i --no-setup --deps search-auto -n "$RACKET_APP_NAME" "$APP_DIR/$RACKET_APP_NAME" |& indent
 raco setup -DK --fail-fast |& indent
+
+echo "-----> Compiling application distribution"
+
+pushd "$APP_DIR/$RACKET_APP_NAME"
+
+mkdir -p "$RELEASE_DIR"
+raco koyo dist -t "$RELEASE_DIR"
