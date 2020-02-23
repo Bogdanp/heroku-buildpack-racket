@@ -111,7 +111,7 @@ echo "-----> Compiling application distribution"
 
 pushd "$APP_DIR"
 
-raco koyo dist |& indent
+raco koyo dist ++lang north |& indent
 
 echo "-----> Creating /app/run"
 
