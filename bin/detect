@@ -2,12 +2,5 @@
 
 set -euo pipefail
 
-BUILD_DIR=$1
-
-if [ -f "$BUILD_DIR/**/info.rkt" ]; then
-  echo "Racket" && exit 0
-else
-  echo "Failed to locate ‘info.rkt’ file."
-fi
-
-exit 1
+echo "Racket"
+exit 0
