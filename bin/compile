@@ -78,7 +78,7 @@ fi
 APP_DIR="$BUILD_DIR/app"
 RACKET_DIR="$BUILD_DIR/racket"
 
-pushd $BUILD_DIR
+pushd $BUILD_DIR |& indent
 
 echo "-----> Moving application into ‘app’ directory"
 
@@ -109,17 +109,19 @@ raco pkg install -D -i --deps search-auto -n "$RACKET_APP_NAME" "$APP_DIR/$RACKE
 
 echo "-----> Compiling application distribution"
 
-pushd "$APP_DIR"
+pushd "$APP_DIR" |& indent
 
 raco koyo dist |& indent
 
 echo "-----> Creating /app/run"
 
 mv dist "$BUILD_DIR/dist"
-mv static "$BUILD_DIR/static"
 popd
+
 ln -s "dist/bin/$RACKET_APP_NAME" run
+ln -s "dist/bin/static" static
 
-echo "-----> Removing app dir"
+echo "-----> Pruning build artifacts"
 
+rm -r "$RACKET_DIR"
 rm -r "$APP_DIR"
