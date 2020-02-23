@@ -6,5 +6,5 @@ addons:
   - heroku-postgresql
 
 default_process_types:
-  web: run
+  web: /app/run
 EOF

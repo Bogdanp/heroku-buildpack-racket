@@ -14,7 +14,7 @@ Heroku tailored to [koyo] applications.
 `Procfile`:
 
 ``` sh
-web: run
+web: /app/run
 ```
 
 [koyo]: https://koyoweb.org
