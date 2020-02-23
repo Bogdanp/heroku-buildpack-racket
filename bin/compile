@@ -38,6 +38,16 @@ fi
 
 RACKET_VERSION=$(cat "$RACKET_VERSION_PATH")
 
+RACKET_APP_NAME_PATH="$ENV_DIR/RACKET_APP_NAME"
+
+if [ ! -f "$RACKET_APP_NAME_PATH" ]; then
+  echo "     - ERROR: The RACKET_APP_NAME configuration variable does not appear to be set"
+  echo "     - Aborting..."
+  exit 1
+fi
+
+RACKET_APP_NAME=$(cat "$RACKET_APP_NAME_PATH")
+
 if [[ "$RACKET_VERSION" =~ '-minimal'$ ]]; then
   RACKET_VERSION=${RACKET_VERSION%-minimal}
   if [[ ${RACKET_VERSION,,} == 'current' || ${RACKET_VERSION,,} == 'head' ]]; then
