@@ -14,7 +14,7 @@ Heroku tailored to [koyo] applications.
 `Procfile`:
 
 ``` sh
-web: app/dist/bin/app-name-here
+web: bin/app
 ```
 
 [koyo]: https://koyoweb.org
