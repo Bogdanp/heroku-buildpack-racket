@@ -76,7 +76,6 @@ else
 fi
 
 APP_DIR="$BUILD_DIR/app"
-BIN_DIR="$BUILD_DIR/bin"
 RACKET_DIR="$BUILD_DIR/racket"
 
 pushd $BUILD_DIR
@@ -114,7 +113,13 @@ pushd "$APP_DIR"
 
 raco koyo dist |& indent
 
-echo "-----> Creating bin/app"
+echo "-----> Creating /app/run"
 
-mkdir -p "$BIN_DIR"
-ln -s "$APP_DIR/dist/bin/$RACKET_APP_NAME" "$BIN_DIR/app"
+mv dist "$BUILD_DIR/dist"
+mv static "$BUILD_DIR/static"
+popd
+ln -s "dist/bin/$RACKET_APP_NAME" run
+
+echo "-----> Removing app dir"
+
+rm -r "$APP_DIR"
