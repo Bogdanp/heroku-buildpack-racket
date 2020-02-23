@@ -113,4 +113,10 @@ echo "-----> Compiling application distribution"
 pushd "$APP_DIR/$RACKET_APP_NAME"
 
 mkdir -p "$RELEASE_DIR"
-raco koyo dist -t "$RELEASE_DIR" |& indent
+raco koyo dist |& indent
+mv dist/* "$RELEASE_DIR/"
+
+echo "-----> Removing app"
+
+popd
+rm -r app
