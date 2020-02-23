@@ -9,4 +9,12 @@ Heroku tailored to [koyo] applications.
     $ heroku config:set RACKET_APP_NAME=your-app-name
     $ heroku config:set RACKET_VERSION=7.6
 
+## Configuration
+
+`Procfile`:
+
+``` sh
+web: app/dist/bin/app-name-here
+```
+
 [koyo]: https://koyoweb.org

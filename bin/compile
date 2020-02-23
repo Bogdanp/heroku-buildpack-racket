@@ -76,7 +76,6 @@ else
 fi
 
 APP_DIR="$BUILD_DIR/app"
-RELEASE_DIR="$BUILD_DIR/release"
 RACKET_DIR="$BUILD_DIR/racket"
 
 pushd $BUILD_DIR
@@ -112,11 +111,4 @@ echo "-----> Compiling application distribution"
 
 pushd "$APP_DIR/$RACKET_APP_NAME"
 
-mkdir -p "$RELEASE_DIR"
 raco koyo dist |& indent
-mv dist/* "$RELEASE_DIR/"
-
-echo "-----> Removing app"
-
-popd
-rm -r app
