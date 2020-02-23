@@ -76,7 +76,7 @@ else
 fi
 
 APP_DIR="$BUILD_DIR/$RACKET_APP_NAME"
-RACKET_DIR="$BUILD_DIR/racket"
+RACKET_DIR="/opt/racket"
 
 cd $BUILD_DIR
 
