@@ -109,6 +109,6 @@ raco pkg install -D -i --deps search-auto -n "$RACKET_APP_NAME" "$APP_DIR/$RACKE
 
 echo "-----> Compiling application distribution"
 
-pushd "$APP_DIR/$RACKET_APP_NAME"
+pushd "$APP_DIR"
 
 raco koyo dist |& indent
