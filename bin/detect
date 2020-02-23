@@ -1,3 +1,13 @@
 #!/bin/bash
 
-echo "Racket" && exit 0
+set -euo pipefail
+
+BUILD_DIR=$1
+
+if [ -f "$BUILD_DIR/$RACKET_APP_NAME/info.rkt" ]; then
+  echo "Racket" && exit 0
+else
+  echo "Failed to locate ‘info.rkt’ file.  Did you set your \$RACKET_APP_NAME correctly?"
+fi
+
+exit 1
