@@ -113,13 +113,11 @@ pushd "$APP_DIR"
 
 raco koyo dist ++lang north |& indent
 
-echo "-----> Creating /app/run"
+echo "-----> Installing distribution"
 
 mv dist "$BUILD_DIR/dist"
 popd
-
 ln -s "dist/bin/$RACKET_APP_NAME" run
-ln -s "dist/bin/static" static
 
 echo "-----> Pruning build artifacts"
 
